@@ -32,7 +32,6 @@ export default function AppRouter() {
       <Route path='/paneladmin' element={<PanelAdmin/>}/>
       <Route path='/paneladmin/product' element={<Protected route={<Product/>}/>} />
       <Route path='/paneladmin/resaultPay' element={<Protected route={<ResaultPay/>}/>} />
-      <Route path='/paneladmin/payment' element={<Protected route={<Payment/>}/>} />
       <Route path='/paneladmin/orders' element={<Protected route={<Orders/>}/>} />
       <Route path='/paneladmin/inventory' element={<Protected route={<Inventory/>}/>} />
 
