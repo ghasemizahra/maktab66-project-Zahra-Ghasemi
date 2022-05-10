@@ -15,7 +15,7 @@ import logo from '../Assest/Images/logo.png'
 import { Link } from 'react-router-dom';
 
 
-const pages = ['سبدخرید', 'مدیریت'];
+const pages = ['مدیریت','سبدخرید'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -34,8 +34,8 @@ const ResponsiveAppBar = () => {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
+      <Container maxWidth="xl" className='header'>
+        <Toolbar disableGutters >
           <Box sx={{ flexGrow: 1, display: { xs: 'block', sm: 'none' } }}>
             <IconButton
               size="large"
