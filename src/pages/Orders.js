@@ -1,7 +1,21 @@
-import React from 'react'
+// import React from 'react'
+// import Admin from '../Layouts/Admin'
 
-export default function Orders() {
+//  function Orders() {
+//   return (
+//     <div>سفارشات</div>
+//   )
+// }
+// export default Admin(Orders)
+import React from 'react'
+import WaitingOrder from '../Components/WaitingOrder'
+import Admin from '../Layouts/Admin'
+
+function Orders() {
   return (
-    <div>سفارشات</div>
+    <>
+      <WaitingOrder />
+    </>
   )
 }
+export default Admin(Orders)

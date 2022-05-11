@@ -7,24 +7,26 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { useNavigate,useLocation } from 'react-router';
-import { useSelector, useDispatch } from 'react-redux'
+import {  useDispatch } from 'react-redux'
 import { login} from '../Redux/Reducer'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux'
+
 export default function Login() {
   const [admin,setAdmin]=useState()
   const state = useSelector((state) => state.admin.isLogin)
-  console.log(state);
+
   const Dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
-  console.log(location.state);
+  // console.log(location.state);
   const redirectaddress = location.state?.from.pathname || '/paneladmin'
   useEffect(()=>{
     axios.get('http://localhost:3002/whoami')
     .then(res=>setAdmin(res.data))
     .catch(error=>console.log(error))
   },[])
-  console.log(admin);
+  // console.log(admin);
   const formik = useFormik({
     initialValues: {
       userName: '',

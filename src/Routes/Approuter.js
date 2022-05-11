@@ -29,9 +29,11 @@ export default function AppRouter() {
       <Route path='/finalbuy' element={<FinallBuy/>}/>
       <Route path='/payment' element={<Payment/>}/>
       
-      <Route path='/paneladmin' element={<PanelAdmin/>}/>
+      {/* <Route path='/paneladmin' element={<PanelAdmin/>}/> */}
+      <Route path='/paneladmin' element={<Protected route={<PanelAdmin/>}/>} />
+
       <Route path='/paneladmin/product' element={<Protected route={<Product/>}/>} />
-      <Route path='/paneladmin/resaultPay' element={<Protected route={<ResaultPay/>}/>} />
+      {/* <Route path='/paneladmin/resaultPay' element={<Protected route={<ResaultPay/>}/>} /> */}
       <Route path='/paneladmin/orders' element={<Protected route={<Orders/>}/>} />
       <Route path='/paneladmin/inventory' element={<Protected route={<Inventory/>}/>} />
 

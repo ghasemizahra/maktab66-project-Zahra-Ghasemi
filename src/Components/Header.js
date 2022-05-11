@@ -33,7 +33,7 @@ const ResponsiveAppBar = () => {
 
 
   return (
-    <AppBar position="static">
+    <AppBar  position="static">
       <Container maxWidth="xl" className='header'>
         <Toolbar disableGutters >
           <Box sx={{ flexGrow: 1, display: { xs: 'block', sm: 'none' } }}>
@@ -43,7 +43,7 @@ const ResponsiveAppBar = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              // color="inherit"
             >
               {/* <MenuIcon /> */}
               menue
@@ -74,12 +74,12 @@ const ResponsiveAppBar = () => {
             </Menu>
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' } }}>
-              <Box
-                sx={{ my: 2, color: 'white', display: 'block' }}
+          <Box  sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' } }}>
+              <Box 
+                sx={{ my: 2, display: 'block' }}
               >
-            <Link to='/cart'>{pages[0]}</Link>
-            <Link to='/login'>{pages[1]}</Link>
+            <Link to='/paneladmin' className="pages">{pages[0]}</Link>
+            <Link to='/cart' className="pages">{pages[1]}</Link>
               </Box>
            
           </Box>

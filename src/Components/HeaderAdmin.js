@@ -64,12 +64,12 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', sm: 'none', md: 'none' },
               }}
             >
-              <MenuItem onClick={handleCloseNavMenu} style={{ display: 'block' }}>
-                <Typography textAlign="center"  >
-                <Link to={`/paneladmin/product`} >{pages[0]}</Link>
+              <MenuItem  onClick={handleCloseNavMenu} style={{ display: 'block' }}>
+                <Typography  textAlign="center"  >
+                <Link to={`/paneladmin/product`}  >{pages[0]}</Link>
                 </Typography>
                 <Typography textAlign="center" >
-                <Link to={`/paneladmin/inventory`}  >{pages[1]}</Link>
+                <Link to={`/paneladmin/inventory` }  >{pages[1]}</Link>
                 </Typography>
                 <Typography textAlign="center" >
                 <Link to={`/paneladmin/orders`}  >{pages[2]}</Link>
@@ -83,9 +83,9 @@ const ResponsiveAppBar = () => {
             <Box
               sx={{ my: 2, color: 'white', display: 'block' }}
             >
-              <Link to={`/paneladmin/product`} style={{ paddingLeft: 13 }} >{pages[0]}</Link>
-              <Link to={`/paneladmin/inventory`} style={{ paddingLeft: 13 }} >{pages[1]}</Link>
-              <Link to={`/paneladmin/orders`} style={{ paddingLeft: 13 }} >{pages[2]}</Link>
+              <Link to={`/paneladmin/product`} style={{ paddingLeft: 13 }} className="pages" >{pages[0]}</Link>
+              <Link to={`/paneladmin/inventory`} style={{ paddingLeft: 13 }} className="pages">{pages[1]}</Link>
+              <Link to={`/paneladmin/orders`} style={{ paddingLeft: 13 }} className="pages">{pages[2]}</Link>
             </Box>
 
           </Box>

@@ -1,10 +1,19 @@
 body{
     background-color: white;
-    padding: 56px;
+    padding: 25px;
 }
 .app{
     background-color: white;
 }
 .header{
     background-color: rgb(199, 148, 114);
+    margin:20px;
 }
+.pages{
+    justify-content: space-around;
+    /* margin: 50px; */  
+    padding: 50px;  
+    color: white;
+
+}
+

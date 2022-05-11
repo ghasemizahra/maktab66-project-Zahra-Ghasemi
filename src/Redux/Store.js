@@ -1,9 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
  import adminRdcer from './Reducer'
-//  import dataReducer from '../Reducer/DataReducer'
+ import orderSlice from './orderSlice'
+
+
+//  import dataSlice from './Reducerdata'
 const store= configureStore({
   reducer: {
     admin: adminRdcer,
+    order:orderSlice,
+
   },
 })
 
