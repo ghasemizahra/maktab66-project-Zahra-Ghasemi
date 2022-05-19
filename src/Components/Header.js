@@ -33,7 +33,7 @@ const ResponsiveAppBar = () => {
 
 
   return (
-    <AppBar  position="static">
+    <AppBar  position="static" className='header' sx={{backgroundColor:"rgb(199, 148, 114)"}}>
       <Container maxWidth="xl" className='header'>
         <Toolbar disableGutters >
           <Box sx={{ flexGrow: 1, display: { xs: 'block', sm: 'none' } }}>
@@ -43,7 +43,7 @@ const ResponsiveAppBar = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              // color="inherit"
+              color="inherit"
             >
               {/* <MenuIcon /> */}
               menue
@@ -86,7 +86,7 @@ const ResponsiveAppBar = () => {
 
           <Box sx={{ flexGrow: 0 }}>
               <Box display={'flex'}>
-              <Typography sx={{display:{xs:'none' , sm:'block'}}}>Niki maskan</Typography>
+              <Typography sx={{display:{xs:'none' , sm:'block'}}}>مسکن اندیشه</Typography>
               <Avatar alt="Remy Sharp" src={logo} />
               </Box>
             <Menu

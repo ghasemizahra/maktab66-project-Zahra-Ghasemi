@@ -15,36 +15,44 @@ import { useSelector } from 'react-redux'
 export default function Login() {
   const [admin,setAdmin]=useState()
   const state = useSelector((state) => state.admin.isLogin)
-
+const ACCESS_TOKEN="";
   const Dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
   // console.log(location.state);
   const redirectaddress = location.state?.from.pathname || '/paneladmin'
-  useEffect(()=>{
-    axios.get('http://localhost:3002/whoami')
-    .then(res=>setAdmin(res.data))
-    .catch(error=>console.log(error))
-  },[])
+  // useEffect(()=>{
+  //   axios.get('http://localhost:3002/whoami')
+  //   .then(res=>setAdmin(res.data))
+  //   .catch(error=>console.log(error))
+  // },[])
   // console.log(admin);
   const formik = useFormik({
     initialValues: {
-      userName: '',
+      username: '',
       password: '',
     },
     validationSchema: Yup.object({
-      userName: Yup.string()
+      username: Yup.string()
         .required('This field is required'),
       password: Yup.string()
         .required('This field is required'),
     }),
     onSubmit: values => {
-      if(values.userName===admin.username && values.password===admin.password){
-       
-        Dispatch(login(true))
-        navigate(redirectaddress , {replace:true})
+              axios
+              .post('http://localhost:3002/auth/login',values)
+        .then((res) => {
+          if (res.status == 200) {
+            Dispatch( login(true))
+           localStorage.setItem(ACCESS_TOKEN,res.data.token)
+            navigate(redirectaddress,{replace:true})
+          }
+        })
+        .catch(() => {
+          alert("با این نام کاربری کاربری ثبت نشده");
+        });
+     
       }
-    }
   });
   return (
    
@@ -59,13 +67,13 @@ export default function Login() {
     > 
       <Typography variant="h4" component="div" sx={{ mb:"1rem"}}>ورود به پنل مدیریت</Typography>
       <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="userName">نام کاربری</label>
-      <TextField id="userName"  variant="filled" name='userName' type="text"  onChange={formik.handleChange}
+      <label htmlFor="username">نام کاربری</label>
+      <TextField id="username"  variant="filled" name='username' type="text"  onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         sx={{width:"100%",display:"block", mb:"1rem"}}
-        value={formik.values.userName}/>
-        {formik.touched.userName && formik.errors.userName ? (
-        <div className='error'>{formik.errors.userName}</div>
+        value={formik.values.username}/>
+        {formik.touched.username && formik.errors.username ? (
+        <div className='error'>{formik.errors.username}</div>
       ) : null}
       <label htmlFor="password">رمز عبور</label>
       <TextField id="password" variant="filled" name='password' type="password"  onChange={formik.handleChange}
@@ -93,73 +101,3 @@ export default function Login() {
 
 
 
-
-
-// import React from 'react';
-// import { Formik } from 'formik';
-// import { useNavigate } from "react-router-dom";
-// const Login = () => (
-//   <div className='containerform'>
-//     <h1>Anywhere in your app!</h1>
-//     <Formik 
-//       initialValues={{ username: '', password: '' }}
-//       validate={values => {
-//         const errors = {};
-//         if (!values.username) {
-//           errors.username = 'Required';
-//         } else if (
-//           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.username)
-//         ) {
-//           errors.username = 'Invalid username ';
-//         }
-//         return errors;
-//       }}
-//       onSubmit={(values, { setSubmitting }) => {
-//         setTimeout(() => {
-//           <useNavigate to="/paneladmin" replace />
-//           setSubmitting(false);
-//         }, 400);
-//       }}
-//     >
-//       {({
-//         values,
-//         errors,
-//         touched,
-//         handleChange,
-//         handleBlur,
-//         handleSubmit,
-//         isSubmitting,
-//         /* and other goodies */
-//       }) => (
-//         <form onSubmit={handleSubmit}>
-//           <input
-//             type="text"
-//             name="username"
-//             onChange={handleChange}
-//             onBlur={handleBlur}
-//             value={values.username}
-//           />
-//  {errors.username && <div>{errors.username}</div>} 
-//  <br/>
-//  <br/>
-
-//    <input
-//             type="password"
-//             name="password"
-//             onChange={handleChange}
-//             onBlur={handleBlur}
-//             value={values.password}
-//           />
-//           {errors.password && touched.password && errors.password}
-//           <br/>
-//  <br/>
-//           <button  type="submit"  disabled={isSubmitting}>
-//             Submit
-//           </button>
-//         </form>
-//       )}
-//     </Formik>
-//   </div>
-// );
-
-// export default Login;

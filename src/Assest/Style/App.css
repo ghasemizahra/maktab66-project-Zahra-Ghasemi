@@ -1,14 +1,18 @@
 body{
     background-color: white;
     padding: 25px;
+    font-family: "Iranian Sans";
+
 }
 .app{
     background-color: white;
 }
 .header{
+
     background-color: rgb(199, 148, 114);
     margin:20px;
 }
+
 .pages{
     justify-content: space-around;
     /* margin: 50px; */  
@@ -16,4 +20,5 @@ body{
     color: white;
 
 }
+
 

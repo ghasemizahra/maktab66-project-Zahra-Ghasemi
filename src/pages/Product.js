@@ -1,14 +1,29 @@
+
+
+
+
+
+
+
 import React, { useState, useEffect } from 'react'
 import Admin from '../Layouts/Admin'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Modal from '../Components/modal/Modal'
+// import Todo, {ToDoList} from '../Components/Todo'
 
 function Product() {
-  const [product, setProduct] = useState()
-  const [categroys, setCategorys] = useState()
+  const [product, setProduct] = useState([])
+
+
+
+
+
+  const [categroys, setCategorys] = useState([])
   const url = 'http://localhost:3002/products';
 
-  useEffect(() => {
+
+  function getProduct(){
     axios({
       url: url,
       method: 'get',
@@ -23,10 +38,8 @@ function Product() {
         console.log(error);
       });
 
-
-
-
-  }, [])
+  }
+  useEffect(() => {getProduct() }, [])
 
 
   useEffect(() => {
@@ -47,24 +60,31 @@ function Product() {
 
   }, [])
 
+    const handeDelete = (e)=>{
+     const id=e.target.value
+     const request = axios.delete(`http://localhost:3002/products/${id}`)
+     return request.then(getProduct())
+    }
   return (
     <>
-      <button ><Link to='' />افزودن کالا</button>
+  
+    {/* <Todo/> */}
+<Modal/>
       <h2>مدیریت کالاها</h2>
-      {product == null ? "loding" :
+      {product  == null ? "loding" :
         <div>
           <table dir="rtl">
             <tr>
               <th>تصویر</th>
-              <th>نام ملک</th>
+              <th>نام کالا</th>
               <th>دسته بندی</th>
               <th>لینک</th>
             </tr>
-            {product.map((item) => {
-              if (item.category == 1) {
+            {product.map((item,i) => {
                 return (
-                  <tr>
-                    <td><img className='productImg' src={item.images} /></td>
+                  <tr key={i}>
+
+                    <td><img className='productImg' src={`http://localhost:3002${item.images}`} style={{width:"70px" ,height:"70px"}} /></td>
                     <td>{item.name}</td>
                     {categroys.map(categroyItem => {
                       if (categroyItem.id == item.category) {
@@ -73,7 +93,7 @@ function Product() {
                             <td>{categroyItem.name}</td>
                             <td>
                               <Link to='/'>ویرایش </Link>
-                              <Link to='/'>حذف</Link>
+                              <button value={item.id} onClick={handeDelete}>حذف</button>
                             </td>
                           </>
 
@@ -83,16 +103,14 @@ function Product() {
                     })}
                   </tr>
                 )
-              }
-            })}
+          
+          })}
           </table>
 
 
         </div>
 
       }
-
-
     </>
   )
 }

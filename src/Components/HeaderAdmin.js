@@ -31,8 +31,8 @@ const ResponsiveAppBar = () => {
 
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl" class="header">
+    <AppBar  position="static" sx={{backgroundColor:"rgb(199, 148, 114)" , color:"white"}}>
+      <Container maxWidth="xl" className='header' >
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: 'block', sm: 'none' } }}>
             <IconButton
@@ -92,7 +92,7 @@ const ResponsiveAppBar = () => {
 
           <Box sx={{ flexGrow: 0 }}>
             <Box display={'flex'} >
-              <Typography variant="h6" style={{ paddingRight: 13 }} sx={{ display: { xs: 'none', sm: 'block' } }}>سایت مسکن </Typography>
+              <Typography variant="h6" style={{ paddingRight: 13 }} sx={{ display: { xs: 'none', sm: 'block' } }} > مسکن اندیشه </Typography>
               <Link to="/"><Avatar className="logo" alt="logo" title="صفحه اصلی" src={logo} /></Link>
             </Box>
             <Menu

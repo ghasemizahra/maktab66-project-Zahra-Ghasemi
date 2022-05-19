@@ -14,8 +14,8 @@ import Orders from '../pages/Orders'
 import Notfound from '../pages/Notfound'
 import ResaultPay from '../pages/ResaultPay'
 import Protected from './Protected.route';
-
-
+import Resived from '../pages/Resived';
+import OutletOrder from '../pages/OutletOrder';
 export default function AppRouter() {
   return (
     <>
@@ -38,7 +38,10 @@ export default function AppRouter() {
       <Route path='/paneladmin/inventory' element={<Protected route={<Inventory/>}/>} />
 
 
-
+      <Route path='/' element={<OutletOrder/>}>
+          <Route path='/paneladmin/orders' element={<Protected element={<Orders />} />} />
+          <Route path='/paneladmin/orders/resived' element={<Protected element={<Resived />} />} />
+        </Route>
 
       <Route path='*' element={<Notfound/>} />
     </Routes>
