@@ -1,12 +1,17 @@
 import React from 'react';
 import Header from '../Components/Header'
+import Sidebar from '../Components/Sidebar'
 
 function User(Component) {
-    return function WithchekC({...props}) {
+    const pathCurrent = window.location
+    const pathCategory = '/category'
+    return function UserLayout({ ...props }) {
         return (
-            <>			
-            <div><Header/></div>
-
+            <>
+                <div><Header /></div>
+                <div>
+                    {pathCurrent.pathname === pathCategory ? <Sidebar /> : null}
+                </div>
                 <Component {...props} />
             </>
         )
