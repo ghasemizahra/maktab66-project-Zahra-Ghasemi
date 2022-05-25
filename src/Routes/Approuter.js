@@ -25,8 +25,8 @@ export default function AppRouter() {
       <Route path='/login' element={<Login/>}/>
       <Route path='/cart' element={<Cart/>} />
       {/* edit path (add id selement selected) */}
-      <Route path='/detail' element={<Detail/>} />  
-      <Route path='/category' element={<Category/>}/> 
+      <Route path='/detail/:productId' element={<Detail />} />
+          <Route path='/category' element={<Category/>}/> 
       <Route path='/finalbuy' element={<FinallBuy/>}/>
       <Route path='/payment' element={<Payment/>}/>
       

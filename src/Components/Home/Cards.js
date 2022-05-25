@@ -26,8 +26,8 @@ export default function Cards(props) {
     <Box  sx={{width:{xs:'90%' , sm:'30%' }, display:{xs:'block' , sm:'inline-block;'}}} >
       <Cardstyle  onClick={()=>dispatch(setIdcard(item.id))}>
         <CardActionArea  >
-        <Link to='/detail'  >
-          <CardMedia
+        <Link to={`/detail/${item.id}`}     >
+                    <CardMedia
             component="img"
             height="140"
             image={`http://localhost:3002${item.images}`}
@@ -39,9 +39,7 @@ export default function Cards(props) {
             <Typography gutterBottom variant="h5" component="div">
               {item.name}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              قیمت : {item.price}
-            </Typography>
+       
           </CardContent>
         </CardActionArea>
       </Cardstyle>
