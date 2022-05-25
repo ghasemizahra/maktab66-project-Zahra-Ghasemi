@@ -98,6 +98,11 @@ function Detail() {
 
 
     </>
+
+
+
+
+    
   )
 }
 export default User(Detail)

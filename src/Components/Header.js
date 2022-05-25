@@ -15,7 +15,7 @@ import logo from '../Assest/Images/logo.png'
 import { Link } from 'react-router-dom';
 
 
-const pages = ['مدیریت','سبدخرید'];
+const pages = ['مدیریت','سبدخرید'  ];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -31,10 +31,10 @@ const ResponsiveAppBar = () => {
   };
 
 
-
   return (
-    <AppBar  position="static" className='header' sx={{backgroundColor:"rgb(199, 148, 114)"}}>
-      <Container maxWidth="xl" className='header'>
+    <>
+    <AppBar  position="static"  sx={{ objectFit:"cover" ,backgroundColor:"rgb(248, 223, 155)"}}>
+      <Container maxWidth="xl"  >
         <Toolbar disableGutters >
           <Box sx={{ flexGrow: 1, display: { xs: 'block', sm: 'none' } }}>
             <IconButton
@@ -43,7 +43,6 @@ const ResponsiveAppBar = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
             >
               {/* <MenuIcon /> */}
               menue
@@ -76,9 +75,9 @@ const ResponsiveAppBar = () => {
 
           <Box  sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' } }}>
               <Box 
-                sx={{ my: 2, display: 'block' }}
+                sx={{ my: 2, display: 'flex',justifyContent:'space-between' ,width:'15%'}}
               >
-            <Link to='/paneladmin' className="pages">{pages[0]}</Link>
+            <Link to='/paneladmin' className="pages" >{pages[0]}</Link>
             <Link to='/cart' className="pages">{pages[1]}</Link>
               </Box>
            
@@ -87,7 +86,7 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
               <Box display={'flex'}>
               <Typography sx={{display:{xs:'none' , sm:'block'}}}>مسکن اندیشه</Typography>
-              <Avatar alt="Remy Sharp" src={logo} />
+              <Link to="/"><Avatar className="logo" alt="logo" title="صفحه اصلی" src={logo} /></Link>
               </Box>
             <Menu
               sx={{ mt: '45px' }}
@@ -110,7 +109,9 @@ const ResponsiveAppBar = () => {
           </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBar>   
+   <div className='header'></div> 
+</>
   );
 };
 export default ResponsiveAppBar;

@@ -2,7 +2,7 @@ import React from 'react'
 import './Assest/Style/App.css'
 import AppRouter from './Routes/Approuter'
 import {Provider} from 'react-redux'
-import store from './Redux/store'
+import store from './Redux/Store'
 import './Assest/fonts/font.css'
 function App() {
   return (
