@@ -5,12 +5,12 @@ import {Box, Typography} from "@mui/material";
 import NumberFormat from 'react-number-format';
 import Button from "@mui/material/Button";
 import AddLocationIcon from '@mui/icons-material/AddLocation';
-import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
-import BarChartIcon from '@mui/icons-material/BarChart';
+import { Linkstyle } from "../Assest/Style/Stylecomponent";
+import User from "../Layouts/User"
 import {api} from '.././sevices/Config'
 
 
-const Detail = () => {
+const Detaile = () => {
     let params = useParams();
     const [products,setproducts] = useState([]);
     const [category,setcategory] = useState([]);
@@ -50,9 +50,9 @@ console.log(products.name)
     return (
         <div>
             <Box sx={{m: 4}}>
-                <Grid container spacing={2} sx={{pb: 4, borderBottom: "2px solid gray"}}>
-                    <Grid item xs={12} md={6} lg={4}>
-                        <img src={`http://localhost:3002/files/${products.images}`} alt=""/>
+                <Grid container spacing={40} sx={{pb: 4, borderBottom: "2px solid gray"}}>
+                    <Grid item xs={12} md={6} lg={4}  >
+                        <img src={`http://localhost:3002${products.images}`} alt=""/>
                     </Grid>
                     <Grid item xs={12} md={6} lg={8}>
                         <Box sx={{
@@ -68,20 +68,18 @@ console.log(products.name)
                                 <Typography component='span' sx={{color: '#2c2c2c'}}>دسته بندی ها :</Typography>
                                     <span>{nameCategory.name}</span>
                             </Typography>
-                            <Typography component='span' sx={{color: '#2c2c2c'}}>برند :
+                            {/* <Typography component='span' sx={{color: '#2c2c2c'}}>برند :
                                 <span style={{color:  "#7e7e7e"}}>{products.brand}</span>
-                            </Typography>
+                            </Typography> */}
                             <Box sx={{mt: 2 ,my:2}}>
                                 <Typography sx={{display: 'flex', my: 1, alignItems: 'center'}}>
-                                    <BarChartIcon sx={{color: '#4040b3'}}/>
                                     <span>ضمانت خانه</span>
                                 </Typography>
                                 <Typography sx={{display: 'flex', my: 1, alignItems: 'center'}}>
-                                    <AddLocationIcon sx={{color: '#4040b3'}}/>
+                                    <AddLocationIcon sx={{color: 'green'}}/>
                                     <span>امکان پرداخت آنلاین و حضوری</span>
                                 </Typography>
                                 <Typography sx={{display: 'flex', my: 1, alignItems: 'center'}}>
-                                    <ChangeCircleIcon sx={{color: '#4040b3'}}/>
                                     <span>  جریمه بابت پشیمانی</span>
                                 </Typography>
                             </Box>
@@ -154,7 +152,7 @@ console.log(products.name)
                 </Grid>
 
                 <Box sx={{p: 1, py: 5}}>
-                    <Typography variant='h4' sx={{mb: 4}} color='#4040b3'>
+                    <Typography variant='h4' sx={{mb: 4}} color='green'>
                         توضیحات
                     </Typography>
                     <Typography sx={{fontSize: '1.2rem'}}>{products.description}</Typography>
@@ -166,4 +164,4 @@ console.log(products.name)
     
 }
 
-export default Detail ;
+export default User(Detaile) ;
