@@ -1,24 +1,33 @@
 body{
     background-color: white;
-    padding: 25px;
+    /* padding: 25px; */
     font-family: "Iranian Sans";
 
 }
 .app{
-    background-color: white;
+    background-color:white;
+        /* padding: 25px; */
+       
+
 }
 .header{
+    width: 100%;
+    align-items: center;
+    /* background-color: rgb(199, 148, 114); */
+    background-image:url("../Images/h.jpg");
+    background-repeat: no-repeat;
+  height: 80vh;
+  /* background-position: center; */
+  background-size: cover;
+  background-repeat: no-repeat;
 
-    background-color: rgb(199, 148, 114);
-    margin:20px;
+
 }
 
 .pages{
-    justify-content: space-around;
-    /* margin: 50px; */  
-    padding: 50px;  
+    /* width: 40%; */
     color: white;
-
+    text-decoration: none;
 }
 
 

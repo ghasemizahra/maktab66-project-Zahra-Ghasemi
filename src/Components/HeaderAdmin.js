@@ -31,10 +31,11 @@ const ResponsiveAppBar = () => {
 
 
   return (
-    <AppBar  position="static" sx={{backgroundColor:"rgb(199, 148, 114)" , color:"white"}}>
-      <Container maxWidth="xl" className='header' >
-        <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: 'block', sm: 'none' } }}>
+    <>
+    <AppBar  position="static" sx={{backgroundColor:"rgb(248, 223, 155)" , color:"white"}}>
+      <Container maxWidth="xl"  >
+        <Toolbar disableGutters >
+          <Box  sx={{  flexGrow: 1, display: { xs: 'block', sm: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -64,15 +65,15 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', sm: 'none', md: 'none' },
               }}
             >
-              <MenuItem  onClick={handleCloseNavMenu} style={{ display: 'block' }}>
+              <MenuItem  onClick={handleCloseNavMenu} style={{ display: 'block' }} className="pages" >
                 <Typography  textAlign="center"  >
-                <Link to={`/paneladmin/product`}  >{pages[0]}</Link>
+                <Link to={`/paneladmin/product`} className="pages" >{pages[0]}</Link>
                 </Typography>
                 <Typography textAlign="center" >
-                <Link to={`/paneladmin/inventory` }  >{pages[1]}</Link>
+                <Link to={`/paneladmin/inventory` } className="pages" >{pages[1]}</Link>
                 </Typography>
                 <Typography textAlign="center" >
-                <Link to={`/paneladmin/orders`}  >{pages[2]}</Link>
+                <Link to={`/paneladmin/orders`}  className="pages">{pages[2]}</Link>
                 </Typography>
 
               </MenuItem>
@@ -80,8 +81,8 @@ const ResponsiveAppBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' } }}>
-            <Box
-              sx={{ my: 2, color: 'white', display: 'block' }}
+            <Box 
+              sx={{ my: 2, color: 'white', display: 'flex',className:"pages"  }}
             >
               <Link to={`/paneladmin/product`} style={{ paddingLeft: 13 }} className="pages" >{pages[0]}</Link>
               <Link to={`/paneladmin/inventory`} style={{ paddingLeft: 13 }} className="pages">{pages[1]}</Link>
@@ -117,6 +118,8 @@ const ResponsiveAppBar = () => {
         </Toolbar>
       </Container>
     </AppBar>
+       <div className='header'></div> 
+       </>
   );
 };
 export default ResponsiveAppBar;

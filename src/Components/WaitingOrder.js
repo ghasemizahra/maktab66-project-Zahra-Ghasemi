@@ -1,61 +1,72 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux';
-import { setOrder } from '../Redux/orderSlice'
-import { useSelector } from 'react-redux'
-import axios from 'axios'
+import React, { useState, useEffect } from "react";
 import Admin from "../Layouts/Admin"
-function WaitingOrder() {
-  const order = useSelector((state) => state.order)
-  const dispatch = useDispatch()
-  const url = 'http://localhost:3002/orders';
+import {
+  Box,
+  Grid,
+  FormControl,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormLabel,
+} from "@mui/material";
+import TableOrders from "./Stack/TableOrders";
+import axios from "axios";
 
-  function getData() {
-    axios({
-      url: url,
-      method: 'get',
-      params: {
-        token: 'TOP-SECRET'
-      }
-    })
-      .then(function (response) {
-        dispatch(setOrder(response.data))
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-  useEffect(() =>  { getData() }, [])
+function WaitingOrder() {
+  const [row, setRow] = useState([]);
+
+  const [selectedValue, setSelectedValue] = React.useState("a");
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
+  // const getorders = async () => {
+  //   const res = await fetch(
+  //     `http://localhost:3002/orders?orderStatus=${selectedValue}`
+  //   );
+  //   const data = await res.json();
+  //   setRow(data);
+  // };
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3002/orders?orderStatus=${selectedValue}`)
+      .then((res) => setRow(res.data));
+  }, [selectedValue]);
+
+  console.log(row);
 
   return (
-    <>
-        <div>
-        <h2>مدیریت سفارشات</h2>
-        <table dir="rtl" style={{ border: '1' }}>
-          <tr>
-            <th>نام کاربر</th>
-            <th>مجموع مبلغ</th>
-            <th>زمان ثبت سفارش</th>
-            <th>وضعیت</th>
-          </tr>
-          {order.order == null ? "zzz" : order.order?.map((item, id) => {
-            if (item.orderStatus == 1) {
-              return (
-                <>
-                  <tr>
-                    <td>{item.customerDetail.firstName}<span style={{ paddingRight: '3px' }}>{item.customerDetail.lastName}</span></td>
-                    <td>{item.purchaseTotal}</td>
-                    <td>{item.orderDate}</td>
-                    <td>بررسی سفارش</td>
-                  </tr>
-                </>)
-            }
-
-          })}
-
-
-        </table>
-        </div>
-    </>
-  )
+    <Grid container  >
+      <Grid item xs={12} md={8}>
+        <FormControl>
+          <RadioGroup
+            row
+            aria-labelledby="demo-row-radio-buttons-group-label"
+            name="row-radio-buttons-group"
+            sx={{ mr:30, mt:5 }}
+          >
+            <FormControlLabel
+              onChange={handleChange}
+              value="1"
+              control={<Radio />}
+              label="سفارشات تحویل داده شده"
+              sx={{mr:10}}
+            />
+            <FormControlLabel
+              onChange={handleChange}
+              value="3"
+              control={<Radio />}
+              label="سفارشات در حال تحویل "
+              sx={{mr:10}}
+            />
+          </RadioGroup>
+        </FormControl>
+      </Grid>
+      <Grid item xs={12} md={8}>
+        <TableOrders row={row} />
+      </Grid>
+    </Grid>
+  );
 }
-export default Admin(WaitingOrder)
+export default Admin(WaitingOrder) ;

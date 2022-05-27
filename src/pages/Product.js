@@ -1,24 +1,13 @@
-
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react'
 import Admin from '../Layouts/Admin'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Modal from '../Components/modal/Modal'
+import Modal from '../Components/Modal/Modal';
+import ModalEdit from '../Components/Modal/ModalEdit'
 // import Todo, {ToDoList} from '../Components/Todo'
 
 function Product() {
   const [product, setProduct] = useState([])
-
-
-
-
-
   const [categroys, setCategorys] = useState([])
   const url = 'http://localhost:3002/products';
 
@@ -65,6 +54,12 @@ function Product() {
      const request = axios.delete(`http://localhost:3002/products/${id}`)
      return request.then(getProduct())
     }
+
+
+    const getId = (e)=>{
+      const id=e.target.value
+      console.log("jjjj",id)
+     }
   return (
     <>
   
@@ -83,8 +78,7 @@ function Product() {
             {product.map((item,i) => {
                 return (
                   <tr key={i}>
-
-                    <td><img className='productImg' src={`http://localhost:3002${item.images}`} style={{width:"70px" ,height:"70px"}} /></td>
+                    <td><img className='productImg' src={`http://localhost:3002/files/${item.image}`}/></td>
                     <td>{item.name}</td>
                     {categroys.map(categroyItem => {
                       if (categroyItem.id == item.category) {
@@ -92,7 +86,7 @@ function Product() {
                           <>
                             <td>{categroyItem.name}</td>
                             <td>
-                              <Link to='/'>ویرایش </Link>
+                            {/* <ModalEdit value={item.id}  /> */}
                               <button value={item.id} onClick={handeDelete}>حذف</button>
                             </td>
                           </>
