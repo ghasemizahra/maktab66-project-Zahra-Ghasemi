@@ -9,7 +9,7 @@ import FinallBuy from '../pages/FinallBuy';
 import Payment from '../pages/Payment';
 import PanelAdmin from '../pages/PanelAdmin';
 import Product from '../pages/Product';
-import Inventory from '../pages/Inventory'
+import Stack from '../Components/Stack/Stack';
 import Orders from '../pages/Orders'
 import Notfound from '../pages/Notfound'
 import ResaultPay from '../pages/ResaultPay'
@@ -34,7 +34,7 @@ export default function AppRouter() {
 
       <Route path='/paneladmin/product' element={<Protected route={<Product/>}/>} />
       <Route path='/paneladmin/orders' element={<Protected route={<Orders/>}/>} />
-      <Route path='/paneladmin/inventory' element={<Protected route={<Inventory/>}/>} />
+      <Route path='/paneladmin/inventory' element={<Protected route={<Stack/>}/>} />
 
 
    
