@@ -163,13 +163,5 @@ console.log(products.name)
     )
     
 }
-<<<<<<< HEAD
-export default User(Detail)
-
-
-
-
-=======
 
 export default User(Detaile) ;
->>>>>>> feat/3
