@@ -114,9 +114,6 @@ padding: -1px;
 margin: 9px;
 `
 
-<<<<<<< HEAD
-export { TextFild }
-=======
 export { TextFild }
 
 
@@ -195,4 +192,3 @@ input[type="submit"]:active {
 
 `
 export { ModalStyle }
->>>>>>> feat/3
