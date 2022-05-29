@@ -39,10 +39,11 @@ function Sidebar() {
   useEffect(() =>  { getCategory() }, [])
   return (
 
-    <Box>
+    <Box className="sidebar">
       {category == null ? "loding" :
       <>{category.map((item,i)=>
-<Link to='/category'  state={{ from: item }} sx={{display:'flex',width:'30%',justifyContent:' space-between'}}>{item.name}</Link>
+     <div className="sidebaritem">
+<Link to='/category' style={{ textDecoration: 'none' }}  state={{ from: item }} sx={{display:'flex',width:'30%',justifyContent:' space-between' }} >{item.name}</Link></div>
         )}</>
       }
 
