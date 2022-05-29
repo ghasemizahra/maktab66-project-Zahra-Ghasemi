@@ -31,3 +31,26 @@ body{
 }
 
 
+.sidebar{     
+    position: absolute;
+padding: 10px;
+    margin-top: 5%;
+    display: grid;
+    text-decoration: none;
+
+}
+.category{
+    margin-right: 10%;
+
+}
+.sidebaritem{   
+    margin: 20px;
+    text-decoration: none;
+}
+.sidebaritem:hover {
+background-color: rgb(247, 235, 173);
+border-radius: 5px;
+width: 70%;
+height: 50%;
+
+}
