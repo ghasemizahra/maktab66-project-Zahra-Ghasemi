@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Grid,Button } from "@mui/material";
-import TableStack from "../../pages/Inventory";
+import TableStack from "../Stack/TableStack";
 import axios from "axios";
-
+import Admin from "../../Layouts/Admin"
 function Stack() {
   const [row, setRow] = useState([]);
   const[flag,setFlag]=useState({"id":true})
@@ -33,4 +33,4 @@ function Stack() {
     </Grid>
   );
 }
-export { Stack };
+export default Admin(Stack) ;
