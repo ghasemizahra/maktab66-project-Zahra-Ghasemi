@@ -16,14 +16,14 @@ function Category() {
   const location = useLocation()
   const { from } = location.state
   return (
-    <div>
+    <div className='category'>
       {product.product == null ? <Navigate to='/category' /> :
         <>
           <h1>{from.name}</h1>
           {product.product.map((item, i) => {
             if (item.category == from.id) {
               return (
-                  <Cards item={item} key={i} />
+                  <Cards item={item} key={i}  />
               )
             }
 
