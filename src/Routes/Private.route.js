@@ -14,5 +14,4 @@ if(!token){
 return (
     route   
      )
-}
-export default Protected;
+}export default Protected;
