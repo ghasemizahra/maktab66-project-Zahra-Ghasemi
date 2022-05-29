@@ -5,19 +5,14 @@ function Protected({ route }) {
     const state = useSelector((state) => {
         return state.admin.isLogin
     })
-    console.log(state,"sss")
-
-    // function cheklogin() {
-    //     // setIslogin(true)
-    // }
-    console.log(state);
+  const token=localStorage.getItem('')
     const location=useLocation()
-if(!state){
-    return <Navigate to="/login" state={{from:location}}replace />
+if(token){
+    return route
 }
         
 return (
-    route   
+       <Navigate to="/login" state={{from:location}}replace />
      )
 }
 export default Protected;

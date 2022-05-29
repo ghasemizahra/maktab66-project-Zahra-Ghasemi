@@ -14,14 +14,14 @@ import Orders from '../pages/Orders'
 import Notfound from '../pages/Notfound'
 import ResaultPay from '../pages/ResaultPay'
 import Protected from './Protected.route';
+import PrivateRoute from './Private.route';
 
-// import Private from "./Private.route"
 export default function AppRouter() {
   return (
     <>
       <Routes>
       <Route path='' element={<Home/>} />
-      <Route path='/login' element={<Login/>}/>
+      <Route path='/login' element={<PrivateRoute route={<Login/>}/>} />
       <Route path='/cart' element={<Cart/>} />
       {/* edit path (add id selement selected) */}
       <Route path='/detail/:productId' element={<Detaile />} />
@@ -30,7 +30,7 @@ export default function AppRouter() {
       <Route path='/payment' element={<Payment/>}/>
       
       {/* <Route path='/paneladmin' element={<PanelAdmin/>}/> */}
-      <Route path='/paneladmin' element={<Protected route={<Orders/>}/>} />
+      <Route path='/paneladmin' element={<PrivateRoute route={<Orders/>}/>} />
 
       <Route path='/paneladmin/product' element={<Protected route={<Product/>}/>} />
       <Route path='/paneladmin/orders' element={<Protected route={<Orders/>}/>} />
