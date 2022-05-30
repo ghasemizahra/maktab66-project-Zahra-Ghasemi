@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Admin from '../Layouts/Admin'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Modal from '../Components/Modal/Modal';
-import ModalEdit from '../Components/Modal/ModalEdit'
+import Modal from '../Components/modal/Modal';
+import ModalEdit from '../Components/modal/ModalEdit'
 // import Todo, {ToDoList} from '../Components/Todo'
 
 function Product() {
