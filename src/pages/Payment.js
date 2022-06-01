@@ -1,6 +1,6 @@
 import React from 'react'
 import Admin from '../Layouts/Admin';
-import image from "../Assest/Images/terminal_mellat.png"
+import image from '../Assest/Images/terminal_mellat.png'
  function Payment() {
   return (
     <>
