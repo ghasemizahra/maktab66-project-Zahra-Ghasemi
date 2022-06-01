@@ -55,9 +55,9 @@ function WaitingOrder() {
             />
             <FormControlLabel
               onChange={handleChange}
-              value="3"
+              value="2"
               control={<Radio />}
-              label="سفارشات در حال تحویل "
+              label="سفارشات در حال انتظار "
               sx={{mr:10}}
             />
           </RadioGroup>
