@@ -52,6 +52,9 @@ function WaitingOrder() {
               control={<Radio />}
               label="سفارشات تحویل داده شده"
               sx={{mr:10}}
+              // checked={selectedValue =="1"}
+
+
             />
             <FormControlLabel
               onChange={handleChange}
@@ -59,6 +62,7 @@ function WaitingOrder() {
               control={<Radio />}
               label="سفارشات در حال تحویل "
               sx={{mr:10}}
+
             />
           </RadioGroup>
         </FormControl>
