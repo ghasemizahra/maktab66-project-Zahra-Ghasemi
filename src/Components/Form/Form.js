@@ -12,7 +12,7 @@ import {
 import axios from "axios";
 export const ACCESS_TOKEN = 'ACCESS_TOKEN'
 
-const skills = ["داستان", "آشپزی", "آموزش", "ادبیات", "هنری"];
+const skills = ["ویلایی", "زمین", "آپارتمان"];
 
 export default function Form() {
   const [value, setValue] = useState();

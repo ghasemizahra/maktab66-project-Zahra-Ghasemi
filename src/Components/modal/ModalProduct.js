@@ -3,13 +3,15 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import Form from "../../Components/Form/Form"
+import FormProduct from "../../Components/Form/FormProduct"
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width:'60%',
+  height:'100%',
+  overflow:'scroll',
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -23,7 +25,7 @@ export default function ModalProduct() {
 
   return (
     <div>
-      <Button sx={{backgroundColor:"#86efac", width:'100px', m:3 }} variant="outlined" onClick={handleOpen}> افزودن کالا</Button>
+      <Button sx={{backgroundColor:"#86efac", width:'100px', m:3 ,fontFamily:" IRANSans-web"}} variant="outlined" onClick={handleOpen}> افزودن کالا</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -34,7 +36,7 @@ export default function ModalProduct() {
           <Typography id="modal-modal-title" variant="h4" component="h2">
           ویرایش و افزودن کالا
           
-          <Form/>
+          <FormProduct data={""}/>
           </Typography>
          
         </Box>
