@@ -32,9 +32,7 @@ import Perview from './Perview';
     name: yup.string().required(" فیلد ضروری است"),
     price: yup.number().required(" فیلد ضروری است"),
     count: yup.number().required(" فیلد ضروری است"),
-    author: yup.string().required(" فیلد ضروری است"),
     yearOfPublication: yup.number().required(" فیلد ضروری است"),
-    publishers: yup.string().required(" فیلد ضروری است"),
     category: yup.string().required(" فیلد ضروری است"),
     description: yup.string().required(" فیلد ضروری است"),
   });
