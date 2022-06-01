@@ -56,5 +56,11 @@ height: 50%;
 }
 .btnp{
     position: absolute;
-    margin: 50px;
+    margin-top:410px;
+    margin-right: -400px;
+}
+.btnE{
+    position: absolute;
+    margin-top:410px;
+    margin-right: -300px;
 }

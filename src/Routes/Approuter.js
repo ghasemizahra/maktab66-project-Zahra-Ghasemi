@@ -14,7 +14,7 @@ import Orders from '../pages/Orders'
 import Notfound from '../pages/Notfound'
 import ResaultPay from '../pages/ResaultPay'
 import Protected from './Protected.route';
-
+import Success from '../pages/Success';
 // import Private from "./Private.route"
 export default function AppRouter() {
   return (
@@ -28,7 +28,8 @@ export default function AppRouter() {
           <Route path='/category' element={<Category/>}/> 
       <Route path='/finalbuy' element={<FinallBuy/>}/>
       <Route path='/payment' element={<Payment/>}/>
-      
+      <Route path='/success' element={<Success/>}/>
+
       {/* <Route path='/paneladmin' element={<PanelAdmin/>}/> */}
       <Route path='/paneladmin' element={<Protected route={<Orders/>}/>} />
 
