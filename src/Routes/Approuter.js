@@ -6,7 +6,8 @@ import Login from '../pages/Login';
 import Detaile from '../pages/Detail'
 import Category from '../pages/Category'
 import FinallBuy from '../pages/FinallBuy';
-import Payment from '../pages/Payment';
+import Payment from "../pages/Payment"
+
 import PanelAdmin from '../pages/PanelAdmin';
 import Product from '../pages/Product';
 import Stack from '../Components/Stack/Stack';
