@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useMemo } from 'react';
 import User from '../Layouts/User'
 import { useNavigate } from 'react-router-dom'
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Snackbar from '@mui/material/Snackbar';
@@ -10,6 +10,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Alert from '@mui/material/Alert';
+import { api } from '../sevices/Config';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 const useFakeMutation = () => {
   return React.useCallback(
@@ -39,6 +42,14 @@ function computeMutation(newRow, oldRow) {
 
 
 function Cart() {
+  const [product, setProducts] = useState([])
+  
+  
+  useEffect(() => {
+    api.get(`/products`).then(res => setProducts(res.data))
+      .catch(error => console.log(error))
+
+  }, [])
   const mutateRow = useFakeMutation();
   const noButtonRef = React.useRef(null);
   const [promiseArguments, setPromiseArguments] = React.useState(null);
@@ -69,7 +80,27 @@ function Cart() {
 
   const handleYes = async () => {
     const { newRow, oldRow, reject, resolve } = promiseArguments;
-
+    product.map((item, i) => {
+      if (item.id == newRow.id) {
+        if (newRow.valueInput > parseInt(item.count)) {
+          alert("موجودی کم است")
+        }
+        if (newRow.valueInput <= 0) {
+          alert("عدد وارد شده نادرست است")
+        }
+        if (newRow.valueInput <= parseInt(item.count)) {
+          const LocalStorage = JSON.parse(localStorage.getItem("cart"));
+          const findItem = LocalStorage.findIndex(i => i.id == newRow.id)
+          if (findItem >= 0) {
+            LocalStorage.splice(findItem, 1)
+            localStorage.setItem('cart', JSON.stringify(LocalStorage));
+            const newLocal = JSON.parse(localStorage.getItem("cart"));
+            localStorage.setItem('cart', JSON.stringify([...newLocal, newRow]));
+          }
+        }
+      }
+    }
+    )
     try {
       // Make the HTTP request to save in the backend
       const response = await mutateRow(newRow);
@@ -120,31 +151,65 @@ function Cart() {
 
 
   const [productLocal, setProductLocal] = useState([])
-  const [plus, setPlus] = useState([])
-  const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
+  const [rows, setRows] = React.useState([]);
+
+ 
+  useEffect(() => {
+    const data = localStorage.getItem('cart');
+    const initialData = data !== null ? JSON.parse(data) : null;
+    setProductLocal(initialData);
+    setRows(initialData)
+  }, [])
+  const navigate = useNavigate()
+  function handlePyment() {
+    return navigate('/finalbuy')
+  }
+  let [arr, setArr] = useState([])
+  let sum
+  const deleteUser = React.useCallback(
+    (id) => () => {
+      setTimeout(() => {
+        setRows((prevRows) => prevRows.filter((row) => row.id !== id));
+        if (localStorage.getItem("cart")) {
+          const LocalStorage = JSON.parse(localStorage.getItem("cart"));
+          const findItem = LocalStorage.findIndex(i => i.id == id)
+          if (findItem >= 0) {
+            LocalStorage.splice(findItem, 1)
+            localStorage.setItem('cart', JSON.stringify(LocalStorage));
+          }
+        }
+      });
+    },
+    [],
+  );
+  const columns = React.useMemo(
+    () => [
+     
+        { field: 'id', headerName: 'ID', width: 70 },
     { field: 'name', headerName: 'نام کالا', width: 150 },
-    { field: 'valueInput', headerName: 'تعداد', width: 70 , editable: true  },
+    { field: 'valueInput', headerName: 'تعداد', width: 70, editable: true },
     {
       field: 'price',
       headerName: 'قیمت',
       type: 'number',
       width: 70,
     },
-    { field: 'delete', headerName: 'حذف', width: 70 },
-
-
-  ];
-
-  useEffect(() => {
-    const data = localStorage.getItem('cart');
-    const initialData = data !== null ? JSON.parse(data) : null;
-    setProductLocal(initialData);
-  }, [])
-  const navigate = useNavigate()
-  function handlePyment() {
-    return navigate('/finalbuy')
-  }
+      {
+        field: 'actions',
+        type: 'actions',
+        width: 80,
+        getActions: (params) => [
+          <GridActionsCellItem
+            icon={<DeleteIcon />}
+            label="Delete"
+            onClick={deleteUser(params.id)}
+          />
+        ],
+      },
+    ],
+    [deleteUser],
+  );
+console.log(rows)
   return (
     <Box sx={{ padding: 5 }}>
       <h1>سبد خرید</h1>
@@ -155,7 +220,7 @@ function Cart() {
               {renderConfirmDialog()}
 
               <DataGrid
-                rows={productLocal}
+                rows={rows}
                 columns={columns}
                 pageSize={5}
                 rowsPerPageOptions={[5]}
@@ -168,30 +233,34 @@ function Cart() {
                 </Snackbar>
               )}
             </div>
+
           </>
 
 
         }
       </div>
-      <h2>جمع:
-        <span>1040030 تومان</span>
-      </h2>
-      <Button onClick={handlePyment} variant="contained" color="success">
-        نهایی کردن خرید
-      </Button>
       {productLocal == null ? "loading" :
         <>
-          {Object.values(productLocal).map(item => {
-            let count = []
-            let arr = [{}]
-            count = parseInt(item.valueInput) * parseInt(item.price)
-            console.log(count)
+          {productLocal.map(item => {
+            arr = [...arr, parseInt(item.valueInput) * parseInt(item.price)]
+            sum = arr.reduce((x, y) => x + y);
+            
+
           }
           )}
 
         </>
 
       }
+      <h2>جمع:
+        {sum == null ? "0" : <span>{sum}</span>}
+        تومان
+      </h2>
+      <Button onClick={handlePyment} variant="contained" color="success">
+        نهایی کردن خرید
+      </Button>
+
+
     </Box>
   )
 }
