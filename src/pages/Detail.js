@@ -98,7 +98,7 @@ console.log(valueInput)
       <Box sx={{ paddingTop: { xs: '5%', sm: '15%' }, width: { xs: '100%', sm: '50%' } }} >
         <Box>{products.description}</Box>
         <TextFild type="number" min="1" max="100" onChange={(e) => setValueinput(e.target.value)} />
-        <Box>موجودی انبار:{products.count}</Box>
+        <Box>موجودی :{products.count}</Box>
 
         {massege != null ? <p>{massege}</p> : null}
         <Button onClick={handleAdd} variant="contained" color="success">

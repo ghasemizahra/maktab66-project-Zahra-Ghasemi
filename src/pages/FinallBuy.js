@@ -69,7 +69,7 @@ function FinallBuy() {
 
   return (
       <form onSubmit={formik.handleSubmit}>
-        <Grid container sx={{ m: 8 }}>
+        <Grid container >
           <Grid
             item
             xs={6}
@@ -77,8 +77,8 @@ function FinallBuy() {
             justifyContent="center"
             alignItems="center"
           >
-            <Grid item xs={2}>
-              <label> نام </label>
+            <Grid >
+              <label>نام : </label>
             </Grid>
             <Grid item xs={4}>
               <TextField
@@ -107,8 +107,8 @@ function FinallBuy() {
             justifyContent="center"
             alignItems="center"
           >
-            <Grid item xs={3}>
-              <label> نام خانوادگی </label>
+            <Grid item xs={2}>
+              <label> نام خانوادگی :</label>
             </Grid>
             <Grid item xs={3}>
               <TextField
@@ -137,10 +137,10 @@ function FinallBuy() {
             justifyContent="center"
             alignItems="center"
           >
-            <Grid item xs={2}>
-              <label>آدرس</label>
+            <Grid >
+              <label>آدرس:</label>
             </Grid>
-            <Grid item xs={4}>
+            <Grid >
               <TextField
                 margin="dense"
                 size="small"
@@ -167,8 +167,8 @@ function FinallBuy() {
             justifyContent="center"
             alignItems="center"
           >
-            <Grid>
-              <label> آدرس تحویل محصول</label>
+            <Grid >
+              <label> آدرس تحویل محصول:</label>
             </Grid>
             <TextField
               margin="dense"
@@ -196,7 +196,7 @@ function FinallBuy() {
             alignItems="center"
           >
             <Grid>
-              <label>تلفن همراه</label>
+              <label>تلفن همراه:</label>
             </Grid>
 
             <TextField
@@ -224,7 +224,7 @@ function FinallBuy() {
             alignItems="center"
           >
             <Grid>
-              <label>تاریخ تحویل </label>
+              <label>تاریخ تحویل: </label>
             </Grid>
 
             <DatePicker

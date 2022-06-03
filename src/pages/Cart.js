@@ -192,9 +192,12 @@ function Cart() {
       field: 'price',
       headerName: 'قیمت',
       type: 'number',
-      width: 70,
-    },
+      width: 140,
+    },  
+
+
       {
+        headerName: 'حذف',
         field: 'actions',
         type: 'actions',
         width: 80,
