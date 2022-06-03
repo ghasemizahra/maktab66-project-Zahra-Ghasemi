@@ -39,6 +39,13 @@ export default function Cards(props) {
             <Typography gutterBottom variant="h5" component="div">
               {item.name}
             </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              {item.price}
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              {item.description}
+            </Typography>
+       
        
           </CardContent>
         </CardActionArea>

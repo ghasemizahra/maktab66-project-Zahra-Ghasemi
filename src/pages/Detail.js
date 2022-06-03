@@ -86,8 +86,12 @@ console.log(valueInput)
             <Typography gutterBottom variant="h5" component="div">
               {products.name}
             </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              {products.price}
+            </Typography>
             <Typography variant="body2" color="text.secondary">
             </Typography>
+           
           </CardContent>
         </CardActionArea>
       </Card>
@@ -100,6 +104,13 @@ console.log(valueInput)
         <Button onClick={handleAdd} variant="contained" color="success">
           نهایی کردن خرید
         </Button>
+        <br/> <br/>       <br/>       <br/>       <br/>       <br/>       <br/>       <br/>  
+        <hr/>
+        <br/>      
+        <h3>توضیحات</h3>
+            <Typography gutterBottom variant="h5" component="div">
+              {products.description}
+            </Typography>
       </Box>
     </Box>
   )
