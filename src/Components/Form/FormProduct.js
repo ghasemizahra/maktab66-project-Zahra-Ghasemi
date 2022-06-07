@@ -26,7 +26,6 @@ export const caterories=[
     {label:"ویلایی", value:"3"},
   
 ]
-تمم
 import Perview from './Perview';
   const validationSchema = yup.object().shape({
     name: yup.string().required(" فیلد ضروری است"),

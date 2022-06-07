@@ -168,7 +168,7 @@ function FinallBuy() {
             alignItems="center"
           >
             <Grid >
-              <label> آدرس تحویل محصول:</label>
+              <label> آدرس تحویل ملک:</label>
             </Grid>
             <TextField
               margin="dense"

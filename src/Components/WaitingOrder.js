@@ -15,7 +15,7 @@ import axios from "axios";
 function WaitingOrder() {
   const [row, setRow] = useState([]);
 
-  const [selectedValue, setSelectedValue] = React.useState("a");
+  const [selectedValue, setSelectedValue] = React.useState("1");
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);

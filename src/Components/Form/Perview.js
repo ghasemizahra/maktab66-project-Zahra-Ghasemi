@@ -1,6 +1,6 @@
 import React from 'react';
 import CancelPresentationTwoToneIcon from "@mui/icons-material/CancelPresentationTwoTone";
-import image from "../../assets/images/deal-img.jpg";
+// import image from "../../assets/images/deal-img.jpg";
 import { Box 
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -20,7 +20,7 @@ const perview = ({src,delImg}) => {
         <Box>
             <Box component="span" sx={{ color: "red" }}><CancelPresentationTwoToneIcon onClick={delImg }/></Box>
             <Box  style={{
-                backgroundImage: `url(${image})`,
+                // backgroundImage: `url(${image})`,
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 width: "8rem",

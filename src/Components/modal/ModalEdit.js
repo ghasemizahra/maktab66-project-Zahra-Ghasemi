@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal';
 import axios from 'axios'
 import { FiEdit2 } from "react-icons/fi";
   
-import FormEdit1 from "../../Components/Form/FormEdit"
+import FormEdit from "../../Components/Form/FormEdit"
 const style = {
   position: 'absolute',
   top: '50%',
@@ -49,7 +49,7 @@ React.useEffect(()=>{
           <Typography id="modal-modal-title" variant="h4" component="h2">
           ویرایش و افزودن کالا
           
-           <FormEdit1 data={product[0]}/> 
+           <FormEdit data={product[0]}/> 
           </Typography>
          
         </Box>

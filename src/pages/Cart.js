@@ -186,7 +186,7 @@ function Cart() {
     () => [
      
         { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'name', headerName: 'نام کالا', width: 150 },
+    { field: 'name', headerName: 'نام ملک', width: 150 },
     { field: 'valueInput', headerName: 'تعداد', width: 70, editable: true },
     {
       field: 'price',
