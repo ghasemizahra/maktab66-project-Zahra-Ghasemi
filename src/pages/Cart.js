@@ -215,8 +215,8 @@ function Cart() {
 console.log(rows)
   return (
     <Box sx={{ padding: 5 }}>
-      <h1>سبد خرید</h1>
-      <div style={{ height: 400, width: '100%' }}>
+      <h1 style={{textAlign:"center" }}>سبد خرید</h1>
+      <div style={{ height: 400, width: '100%',backgroundColor:"rgb(248, 223, 155)" }}>
         {productLocal == null ? "هیچ کالایی انتخاب نشده است" :
           <>
             <div style={{ height: 400, width: '100%' }}>
@@ -255,13 +255,15 @@ console.log(rows)
         </>
 
       }
-      <h2>جمع:
+      <h2 style={{textAlign:"center" }}>جمع:
         {sum == null ? "0" : <span>{sum}</span>}
         تومان
       </h2>
-      <Button onClick={handlePyment} variant="contained" color="success">
+      <div style={{textAlign:"center"}}>
+      <Button sx={{backgroundColor:"rgb(248, 223, 155)"}} onClick={handlePyment} variant="contained" >
         نهایی کردن خرید
       </Button>
+      </div>
 
 
     </Box>
