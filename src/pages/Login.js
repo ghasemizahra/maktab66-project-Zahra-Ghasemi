@@ -11,7 +11,7 @@ import {  useDispatch } from 'react-redux'
 import { login} from '../Redux/Reducer'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'
-
+import img from "../Assest/Images/back.jpg"
 export default function Login() {
   const [admin,setAdmin]=useState()
   const state = useSelector((state) => state.admin.isLogin)
@@ -55,9 +55,10 @@ const ACCESS_TOKEN="token";
       }
   });
   return (
-   
-    <Box className='container'
+   <div className='lgin'>
+    <Box className='container ' 
       sx={{
+         objectFit:"cover" ,
         marginTop:"5rem",
         textAlign:"center",
         padding:"3rem 1rem",
@@ -88,6 +89,7 @@ const ACCESS_TOKEN="token";
     </form>
     <Link to="/">بازگشت به سایت</Link>
     </Box>
+    </div>
   );
 }
 

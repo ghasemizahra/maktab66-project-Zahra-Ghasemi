@@ -23,6 +23,14 @@ body{
 
 
 }
+.lgin{
+    background-image:url("../Images/back.jpg");
+    background-repeat: no-repeat;
+    height: 80vh;
+    background-position: center;
+    background-size: cover;
+
+}
 
 .pages{
     /* width: 40%; */
