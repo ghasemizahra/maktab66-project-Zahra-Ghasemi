@@ -1,53 +1,47 @@
 import * as React from 'react';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
-import InputModal from './InputModal'
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import FormProduct from "../../Components/Form/FormProduct"
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width:'60%',
+  height:'100%',
+  overflow:'scroll',
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
-export default function ResponsiveDialog() {
+export default function ModalProduct() {
   const [open, setOpen] = React.useState(false);
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        افزودن کالا
-      </Button>
-      <Dialog
-        fullScreen={fullScreen}
+      <Button sx={{backgroundColor:"#86efac", width:'100px', m:3 ,fontFamily:" IRANSans-web"}} variant="outlined" onClick={handleOpen}> افزودن کالا</Button>
+      <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="responsive-dialog-title"
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
       >
-        <DialogTitle id="responsive-dialog-title">
-          {"افزودن/ویرایش کالا"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-<InputModal />
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            بستن
-          </Button>
-
-        </DialogActions>
-      </Dialog>
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h4" component="h2">
+          ویرایش و افزودن کالا
+          
+          <FormProduct data={""}/>
+          </Typography>
+         
+        </Box>
+       
+      </Modal>
     </div>
   );
 }

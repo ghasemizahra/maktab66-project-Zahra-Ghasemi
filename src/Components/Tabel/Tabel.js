@@ -20,7 +20,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import Styles from "./tabel.module.css";
 import swal from "sweetalert";
 import ModalEdit from "../../Components/modal/ModalEdit";
-// import deleteProduct from '../../../../api/getAll/deleteProduct';
+import deleteProduct from '../../sevices/api/getAll/deleteProduct';
 
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -179,7 +179,7 @@ export default function CustomPaginationActionsTable(props) {
                   .then(async(willDelete) => {
                     if (willDelete) {
                       const productId = row.id;
-                      // deleteProduct(productId)
+                      deleteProduct(productId)
       
                     await swal("محصول با موفقیت حذف شد", {
                         icon: "success",

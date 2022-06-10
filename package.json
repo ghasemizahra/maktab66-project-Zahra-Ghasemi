@@ -17,21 +17,25 @@
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "easyedit": "^1.5.0",
     "formik": "^2.2.9",
     "git-flow-npm": "^1.8.1",
     "jalali-moment": "^3.3.11",
     "make-styles": "^0.0.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-hook-usefetch": "^1.0.4",
     "react-icons": "^4.3.1",
     "react-multi-date-picker": "^3.3.0",
     "react-number-format": "^4.9.3",
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-toastify": "^9.0.4",
     "route": "^0.2.5",
     "routes-router": "^4.3.1",
     "styled-components": "^4.1.3",
+    "sweetalert": "^2.1.2",
     "vazir-font": "^30.1.0",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
@@ -61,6 +65,7 @@
     ]
   },
   "devDependencies": {
+    "easyeditor": "^1.2.0",
     "sass": "^1.51.0",
     "sass-module-importer": "^1.4.0"
   }

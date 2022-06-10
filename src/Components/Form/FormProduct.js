@@ -18,15 +18,16 @@ import {
     MenuItem,
   } from "@mui/material";
   import axios from "axios";
-//   import addProduct from '../../api/postAll/AddProduct'
-// import UploadImage from '../../api/postAll/UploadImage'
+  import Perview from './Perview';
+
+  // import addProduct from '../../sevices/api/postAll/AddProduct'
+import UploadImage from '../../sevices/api/postAll/UploadImage'
 export const caterories=[
     {label:"زمین", value:"1"},
     {label:"آپارتمان", value:"2"},
     {label:"ویلایی", value:"3"},
   
 ]
-import Perview from './Perview';
   const validationSchema = yup.object().shape({
     name: yup.string().required(" فیلد ضروری است"),
     price: yup.number().required(" فیلد ضروری است"),
@@ -135,7 +136,7 @@ import Perview from './Perview';
       const data = e.target.files[0];
       const formData = new FormData();
       formData.append("image", data);
-    //  const filename =await UploadImage(formData)
+     const filename =await UploadImage(formData)
       console.log(filename.data.filename);
       formik.setFieldValue("thumbnail", filename.data.filename, false);
      
@@ -148,7 +149,7 @@ import Perview from './Perview';
       files.map((item) => {
         const formData = new FormData();
         formData.append("image", item);
-        // const tempRequest =  UploadImage(formData)
+        const tempRequest =  UploadImage(formData)
         temp.push(tempRequest);
       });
   
@@ -312,57 +313,14 @@ import Perview from './Perview';
           </Grid>
           <Grid container sx={{ my: 4 }}>
           <Grid item xs={12} sx={{ m: 1 }}>
-            <Button
-              // sx={{ my: 1 }}
-              size="small"
-              variant="outlined"
-              fullWidth={true}
-              component="label"
-              color="success"
-              value={formik.values.images}
-            >
-              <Typography>بارگذاری عکس گالری</Typography>
-
-              <input
-                accept="image/jpg,image/jpeg"
-                type="file"
-                id="gallery"
-                name="gallery"
-                required
-                hidden
-                multiple
-                onChange={ (e) => {
-                  handleBulkImageChange(e);            
-                }}             
-              />
-              <CollectionsTwoToneIcon sx={{ mr: 4, my: 1 }} />
-            </Button>
+        
             <span>
               {formik.errors.gallery &&
                 formik.touched.gallery &&
                 formik.errors.gallery}
             </span>
           </Grid>
-          <Grid
-            item
-            style={{
-              backgroundImage:`url(http://localhost:3002/files/${data.images})`,
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              color: "#f5f5f5",
-              marginRight: "auto",
-            }}
-            sx={{
-              bgcolor: "lightgray",
-              m: 1,
-              width: "98%",
-              minHeight: "10rem",
-              border: "2px dashed black",
-            }}
-          >
-            {formik.values.images ? formik.values.images.map((item, index) => <Perview src={item} key={index} delImg={()=>handleDeleteImage(index)}/>  ): ''}
-          </Grid>
+        
         </Grid>
         <Grid
           container
